@@ -1,187 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="description" content="Fugu Life t-shirt designs">
-        <meta name="keywords" content="Fugu, Life, Design">
-        <meta name="author" content="David Auffret">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="theme-color" content="#011F2B">
-        <base href="/">
-        <link rel="shortcut icon" href="favicon.ico">
 
-        <title>Fugu Life</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Fugu Life t-shirt designs">
+    <meta name="keywords" content="Fugu, Life, Design">
+    <meta name="author" content="David Auffret">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="theme-color" content="#011F2B">
+    <base href="/">
+    <link rel="shortcut icon" href="favicon.ico">
 
-        <style type="text/css">
-            #fugu-life-screen {
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(to top,#011F2B, #02668d);
-                z-index: 99999;
-                pointer-events: none;
-            }
+    <title>Fugu Life</title>
 
-            #fugu-life-screen .center {
-                display: block;
-                width: 100%;
-                position: absolute;
-                top: 50%;
-                transform: translateY(-50%);
-            }
+    <style type="text/css">
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            font-family: sans-serif;
+        }
 
-            #fugu-life-screen .logo {
-                width: 250px;
-                margin: 0 auto;
-            }
+        header {
+            width: 100%;
+            position: static;
+            background-color: rgb(44,50,59);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        header button {
+            background: rgba(0,0,0,0);
+            border: 0;
+            border-radius: 5px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+        header button:hover {
+            background: rgba(0,0,0,1);
+        }
 
-            #fugu-life-screen .logo img {
-                filter: drop-shadow(0px 10px 6px rgba(0, 0, 0, 0.2))
-            }
+        .container {
+            max-width: 40rem;
+            width: 100%;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-            #fugu-life-screen .spinner-wrapper {
-                display: block;
-                position: relative;
-                width: 100%;
-                min-height: 100px;
-                height: 100px;
-            }
+        .login {
+            color: white;
+        }
 
-            #fugu-life-screen .spinner-wrapper .spinner {
-                position: absolute;
-                overflow: hidden;
-                left: 50%;
-                margin-left: -50px;
-                animation: outer-rotate 2.91667s linear infinite;
-            }
+        main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-            #fugu-life-screen .spinner-wrapper .spinner .inner {
-                width: 100px;
-                height: 100px;
-                position: relative;
-                animation: sporadic-rotate 5.25s cubic-bezier(0.35, 0, 0.25, 1) infinite;
-            }
+        .products {
+            width: auto;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
 
-            #fugu-life-screen .spinner-wrapper .spinner .inner .gap {
-                position: absolute;
-                left: 49px;
-                right: 49px;
-                top: 0;
-                bottom: 0;
-                border-top: 10px solid;
-                box-sizing: border-box;
-            }
+        .item {
+            width: auto;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: center;
+            margin: 10px;
+        }
 
-            #fugu-life-screen .spinner-wrapper .spinner .inner .left,
-            #fugu-life-screen .spinner-wrapper .spinner .inner .right {
-                position: absolute;
-                top: 0;
-                height: 100px;
-                width: 50px;
-                overflow: hidden;
-            }
+        .item > * {
+            margin: 5px 0;
+        }
 
-            #fugu-life-screen .spinner-wrapper .spinner .inner .left .half-circle,
-            #fugu-life-screen .spinner-wrapper .spinner .inner .right .half-circle {
-                position: absolute;
-                top: 0;
-                width: 100px;
-                height: 100px;
-                box-sizing: border-box;
-                border: 10px solid #4285F4;
-                border-bottom-color: transparent;
-                border-radius: 50%;
-            }
+        .title {
+            color: #02668d;
+        }
+        .price {
+            font-weight: bold;
+            color:#02668d;
+        }
+        .out {
+            font-weight: lighter;
+            color: #ee2727;
+        }
 
-            #fugu-life-screen .spinner-wrapper .spinner .inner .left {
-                left: 0;
-            }
+        .button {
+            width: auto;
+            height: auto;
+            padding: 5px 20px;
+            background: #999;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: not-allowed;
+            opacity: 0.2;
+        }
+    </style>
+</head>
 
-            #fugu-life-screen .spinner-wrapper .spinner .inner .left .half-circle {
-                left: 0;
-                border-right-color: transparent;
-                animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
-                -webkit-animation: left-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
-            }
-
-            #fugu-life-screen .spinner-wrapper .spinner .inner .right {
-                right: 0;
-            }
-
-            #fugu-life-screen .spinner-wrapper .spinner .inner .right .half-circle {
-                right: 0;
-                border-left-color: transparent;
-                animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
-                -webkit-animation: right-wobble 1.3125s cubic-bezier(0.35, 0, 0.25, 1) infinite;
-            }
-
-            @keyframes outer-rotate {
-                0% {
-                    transform: rotate(0deg) scale(0.5);
-                }
-                100% {
-                    transform: rotate(360deg) scale(0.5);
-                }
-            }
-
-            @keyframes left-wobble {
-                0%, 100% {
-                    transform: rotate(130deg);
-                }
-                50% {
-                    transform: rotate(-5deg);
-                }
-            }
-
-            @keyframes right-wobble {
-                0%, 100% {
-                    transform: rotate(-130deg);
-                }
-                50% {
-                    transform: rotate(5deg);
-                }
-            }
-
-            @keyframes sporadic-rotate {
-                12.5% {
-                    transform: rotate(135deg);
-                }
-                25% {
-                    transform: rotate(270deg);
-                }
-                37.5% {
-                    transform: rotate(405deg);
-                }
-                50% {
-                    transform: rotate(540deg);
-                }
-                62.5% {
-                    transform: rotate(675deg);
-                }
-                75% {
-                    transform: rotate(810deg);
-                }
-                87.5% {
-                    transform: rotate(945deg);
-                }
-                100% {
-                    transform: rotate(1080deg);
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div id="root" class="flex">
-            <div id="fugu-life-screen">
-                <div class="center">
-                    <div class="logo">
-                        <img width="250" src="images/icon.svg" alt="logo">
-                    </div>
-                </div>
+<body>
+    <header>
+        <div class="container">
+            <img width="150" src="images/icon.svg" alt="logo">
+            <!-- <div>
+                <button><img width="20" src="images/user.svg" alt="account"></button>
+                <button><img width="20" src="images/cart.svg" alt="cart"></button>
+            </div> -->
+        </div>
+    </header>
+    <main>
+        <div class="products">
+            <div class="item">
+                <img src="images/products/fugu-t-shirt.png" alt="Fugu Life Original T-shirt" width="200" height="200" />
+                <div class="title">Fugu T-shirt</div>
+                <div class="price">$599 <span class="out">out of stock</span></div>
+                <div class="button" disabled>Add to cart</div>
+            </div>
+            <div class="item">
+                <img src="images/products/wolf-t-shirt.png" alt="Wolf Original T-shirt" width="200" height="200" />
+                <div class="title">Wolf T-shirt</div>
+                <div class="price">$899 <span class="out">out of stock</span></div>
+                <div class="button" disabled>Add to cart</div>
             </div>
         </div>
-    </body>
+    </main>
+</body>
+
 </html>
